@@ -33,6 +33,11 @@ public class RmiServer {
 	 * 
 	 * 二RMI原理:
 	 * 
+	 * 三代理模式:
+	 * 
+	 * 四注册中心和命名空间:
+	 * 
+	 * 五spring对rmi的支持
 	 */
  
 	public static void main(String[] args) {
@@ -41,7 +46,10 @@ public class RmiServer {
 			hello = new HelloServiceImpl();
 			//方式一:开启注册中心
 			//方式二:通过start rmiregistry 命名开启注册中心服务
-			LocateRegistry.createRegistry(8056);  
+			LocateRegistry.createRegistry(8056);
+			//注册中心原理
+			//
+			//
 			//绑定命名
 			//实现方式一:java.rmi.Naming
 			//实现方式二:javax.naming.*
@@ -49,6 +57,9 @@ public class RmiServer {
 			Context namingContext = new InitialContext(); 
 			namingContext.bind("rmi://localhost:8056/hello", hello);
 			Naming.bind("rmi://localhost:8056/hello", hello);
+			//命名原理
+			//
+			//
 		} catch (RemoteException e1) {
 			e1.printStackTrace();
 		} catch (MalformedURLException e) {
