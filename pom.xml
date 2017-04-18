@@ -120,7 +120,12 @@
             <groupId>org.codehaus.jackson</groupId>  
             <artifactId>jackson-mapper-asl</artifactId>  
             <version>1.9.13</version>  
-        </dependency>  
+        </dependency> 
+        <dependency>  
+		    <groupId>org.apache.zookeeper</groupId>  
+		    <artifactId>zookeeper</artifactId>  
+		    <version>3.4.6</version>  
+		</dependency>  
     </dependencies>  
   
     <build>  
