@@ -31,7 +31,7 @@ public class ZnodeConfig {
     private int Dataversion = -1;
     
     //监听器，默认为空
-  	private Boolean isWatcher;
+  	private Boolean isWatcher = false;
   	
     public Boolean getIsWatcher() {
 		return isWatcher;
