@@ -1,7 +1,5 @@
 package com.hgc.java.zookeep.client.zkclient;
 
-import org.I0Itec.zkclient.ZkClient;
-
 /**
  * @Description:
  * @author guicheng.huang
