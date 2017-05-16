@@ -1,4 +1,4 @@
-package com.hgc.java.thread;
+package com.hgc.java.thread.sychronize;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;

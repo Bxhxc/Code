@@ -1,6 +1,7 @@
-package com.hgc.java.thread;
+package com.hgc.java.thread.sychronize;
 
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -8,21 +9,23 @@ import java.util.concurrent.TimeUnit;
 /**
  * @Description:
  * @author guicheng.huang
- * @date: 2017年5月16日 上午10:26:27
+ * @date: 2017年5月16日 上午10:28:26
  * @version V0.0.1
  */
-public class ConcurrentHashMapThread3 {
-	public static void main(String[] args) throws InterruptedException {  
-        for (int i = 0; i < 10; i++) {  
+public class ConcurrentHashMapThread4 {
+
+
+    public static void main(String[] args) throws InterruptedException {  
+        for (int i = 0; i < 100; i++) {  
             System.out.println(test());  
         }  
     }  
       
     private static int test() throws InterruptedException {  
-        ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<String, Integer>();  
+        Map<String, Integer> map = new HashMap<String, Integer>();  
         ExecutorService pool = Executors.newCachedThreadPool();  
         for (int i = 0; i < 8; i++) {  
-            pool.execute(new MyTask3(map));  
+            pool.execute(new MyTask4(map));  
         }  
         pool.shutdown();  
         pool.awaitTermination(1, TimeUnit.DAYS);  
@@ -31,20 +34,23 @@ public class ConcurrentHashMapThread3 {
     }  
 }  
   
-class MyTask3 implements Runnable {  
+class MyTask4 implements Runnable {  
+    
+	//被所有的任务类共享变量。
+    public static Object lock = new Object();  
       
     public static final String KEY = "key";  
       
-    private ConcurrentHashMap<String, Integer> map;  
+    private Map<String, Integer> map;  
       
-    public MyTask3(ConcurrentHashMap<String, Integer> map) {  
+    public MyTask4(Map<String, Integer> map) {  
         this.map = map;  
     }  
   
     @Override  
     public void run() {  
         for (int i = 0; i < 100; i++) {  
-            synchronized (map) { // 对共享对象map上锁  
+            synchronized (lock) {  
                 this.addup();  
             }  
         }  
