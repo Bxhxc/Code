@@ -22,6 +22,7 @@ public class CosineSimilarAlgorithm {
 			//将两个字符串中的中文字符以及出现的总数封装到，AlgorithmMap中
 			for (int i = 0; i < doc1.length(); i++) {
 				char d1 = doc1.charAt(i);
+				//判断是否是汉字
 				if(isHanZi(d1)){
 					int charIndex = getGB2312Id(d1);
 					if(charIndex != -1){
