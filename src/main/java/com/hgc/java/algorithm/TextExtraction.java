@@ -1,15 +1,9 @@
 package com.hgc.java.algorithm;
 
 import java.io.IOException;
-
-
 import java.util.List;
-
 import org.ansj.domain.Term;
 import org.ansj.splitWord.analysis.ToAnalysis;
-
-import jdk.internal.org.objectweb.asm.tree.analysis.Analyzer;
-
 /**
  * @Description:文本提取
  * @author guicheng.huang
