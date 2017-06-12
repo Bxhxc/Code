@@ -20,12 +20,28 @@ import org.apache.hadoop.mapred.Reporter;
  */
 public class MaxtemperatureReduce extends MapReduceBase implements Reducer<Text, IntWritable, Text, IntWritable>{
 
+	/**
+	 * Reduce使用:
+	 *  使用: 定义输入Key,输入Value  
+	 *      定义输出key,输出Value
+	 * Haddop IO 常见类型：
+	 *      LongWritable long
+	 *      Text String
+	 *      IntWritable int
+	 * 继承MapReduceBase
+	 * 实现Reducer<Text, IntWritable, Text, IntWritable>接口
+	 * 重写reduce方法
+	 */
 	@Override
 	public void reduce(Text arg0, Iterator<IntWritable> arg1,
 			OutputCollector<Text, IntWritable> arg2, Reporter arg3)
 			throws IOException {
-
-		
+         int maxValue = Integer.MIN_VALUE;
+         //找出最大值
+         while(arg1.hasNext()){
+        	 maxValue = Math.max(maxValue, arg1.next().get());
+         }
+         arg2.collect(new Text(arg0), new IntWritable(maxValue));
 	}
 }
 
