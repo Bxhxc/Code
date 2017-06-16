@@ -14,7 +14,7 @@
         <mahout.version>0.6</mahout.version>  
     </properties>  
   
-    <dependencies>  
+    <dependencies> 
         <dependency>  
             <groupId>org.springframework</groupId>  
             <artifactId>spring-core</artifactId>  
