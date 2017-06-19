@@ -140,7 +140,7 @@ public class ExecutorServiceUse {
   }
   
 //4.invokeAny()
-  public void createThreadMethodInvokeAny() throws InterruptedException, ExecutionException{
+  public void createThreadMethodInvokeAll() throws InterruptedException, ExecutionException{
 	  //Executors.newFixedThreadPool()//固定数量的线程池,可控制线程最大并发数，超出的线程会在队列中等待。
 	  //Executors.newCachedThreadPool();//可缓存的线程池
 	  //Executors.newSingleThreadExecutor()//单一线程池
