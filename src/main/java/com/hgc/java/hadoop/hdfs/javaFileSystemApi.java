@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.BlockLocation;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
@@ -117,5 +118,30 @@ public class javaFileSystemApi {
 	     } finally {
 	       IOUtils.closeStream(in);
 	     }
+	}
+	 
+	//读取文件的内容
+	public static void exitsFile(String filePath) throws IOException{
+	   Configuration conf = new Configuration();
+	   FileSystem fs = FileSystem.get(conf);
+	   boolean isExits = fs.exists(new Path(filePath));
+	}
+	
+	public static void renameFile(String filePath,String newfilePath) throws IOException{
+	   Configuration conf = new Configuration();
+	   FileSystem fs = FileSystem.get(conf);
+	   fs.rename(new Path(filePath), new Path(newfilePath));
+	}
+	
+	public static void getBlackPosition(String filePath) throws IOException{
+		   Configuration conf = new Configuration();
+		   FileSystem fs = FileSystem.get(conf);
+		   FileStatus status = fs.getFileStatus(new Path(filePath));
+		   BlockLocation localtion[] = fs.getFileBlockLocations(status, 0, status.getLen());
+		   int blockLength = localtion.length;
+		   for (int i = 0; i < localtion.length; i++) {
+			   String hosts[] = localtion[i].getHosts();
+			   System.out.println(hosts);
+		   }
 	}
 }
