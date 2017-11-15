@@ -31,10 +31,6 @@ public class ThreadPoolUse {
 					}
 			   });
 			   th.start();
-			   try {
-				   th.join();
-				} catch (Exception e) {
-				}
 		   }
 		   
 		   System.out.println("多线程结束,花费时间"+(System.currentTimeMillis()-statime));
